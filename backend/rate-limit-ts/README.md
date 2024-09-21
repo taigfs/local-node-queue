@@ -29,13 +29,11 @@ If a rate limit is exceeded, the API will respond with a `429` error and a messa
 
 ## Getting Started
 
-### Prerequisites
-
-- npm or yarn
-
 ### Installation
 
-Clone the repository and install dependencies:
+1. **Create a new repository from this template**:
+   - Click the "Use this template" button on the top right of this repository's page to create your own copy of the repository.
+2. Clone the repository and install dependencies:
 
 ```bash
 npm install
@@ -62,8 +60,10 @@ npm test
 - Implement any necessary queuing, retry mechanisms, or concurrency controls.
 - Use both instances of the MockAPI to distribute the load (e.g., round-robin).
 
+**Important:** Only edit the `ApiCaller.ts` file.
+
 ## Submission
 
-- Fork this repository.
+- Create your own repository by using this template.
 - Implement your solution.
-- Submit a pull request explaining your changes and share your forked repository link.
+- Submit a pull request explaining your changes and share your repository's link.

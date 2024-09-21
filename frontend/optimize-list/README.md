@@ -18,8 +18,9 @@ The application has the following features:
 
 ### Installation
 
-1. Fork the repository and install dependencies:
-
+1. **Create a new repository from this template**:
+   - Click the "Use this template" button on the top right of this repository's page to create your own copy of the repository.
+2. Clone your newly created repository to your local machine and install the dependencies.
    ```bash
    npm install
    ```
@@ -44,8 +45,8 @@ Your primary tasks are as follows:
 **Explain your optimizations:** Create a short document explaining the performance issues you identified and how you addressed them. Highlight the key changes and their impact on the application's efficiency.
 
 ## Submission Guidelines
-1. Fork this repository and make your changes in your fork.
+1. Create your own repository by using this template.
 2. Once you have completed the optimizations and bug fixes:
-    - Submit a pull request from your forked repository.
+    - Open a PR in your own repository with the changes you've made.
     - Include a detailed explanation of the issues you fixed and their cause, the optimizations you made, and any tools or techniques you used in the process.
-    - Share the link to your forked repository along with the pull request.
+    - Share the link to your repository along with the pull request.
