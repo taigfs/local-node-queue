@@ -31,7 +31,6 @@ If a rate limit is exceeded, the API will respond with a `429` error and a messa
 
 ### Prerequisites
 
-- Node.js >= 14.x
 - npm or yarn
 
 ### Installation
@@ -39,8 +38,6 @@ If a rate limit is exceeded, the API will respond with a `429` error and a messa
 Clone the repository and install dependencies:
 
 ```bash
-git clone <repository-url>
-cd rate-limited-api-challenge
 npm install
 ```
 
@@ -69,5 +66,4 @@ npm test
 
 - Fork this repository.
 - Implement your solution.
-- Provide a brief explanation of your approach in the README.md.
-- Submit a pull request or share your forked repository link.
+- Submit a pull request explaining your changes and share your forked repository link.
