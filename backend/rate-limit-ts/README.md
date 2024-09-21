@@ -64,7 +64,6 @@ npm test
 - Optimize the API caller to process all requests as quickly as possible without exceeding the rate limits.
 - Implement any necessary queuing, retry mechanisms, or concurrency controls.
 - Use both instances of the MockAPI to distribute the load (e.g., round-robin).
--
 
 ## Submission
 
