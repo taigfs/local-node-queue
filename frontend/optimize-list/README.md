@@ -1,5 +1,4 @@
 
-Copy code
 # React Performance Optimization Challenge
 
 ## Overview
