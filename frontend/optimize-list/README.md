@@ -47,5 +47,5 @@ Your primary tasks are as follows:
 1. Fork this repository and make your changes in your fork.
 2. Once you have completed the optimizations and bug fixes:
     - Submit a pull request from your forked repository.
-    - Include a detailed explanation of the issues you fixed, the optimizations you made, and any tools or techniques you used in the process.
+    - Include a detailed explanation of the issues you fixed and their cause, the optimizations you made, and any tools or techniques you used in the process.
     - Share the link to your forked repository along with the pull request.

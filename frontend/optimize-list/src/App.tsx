@@ -19,19 +19,11 @@ function App() {
     fetchData();
   }, [query]);
 
-  const handleSelectItem = (id: number) => {
-    if (selectedItemIds.includes(id)) {
-      setSelectedItemIds(selectedItemIds.filter((itemId) => itemId !== id));
-    } else {
-    setSelectedItemIds((ids) => [...ids, id]);
-    setLastSelectedItemId(selectedItemIds.length ? selectedItemIds[selectedItemIds.length - 1] : null);
-    }
-  };
 
   useEffect(() => {
     setTotalSelectedCount(selectedItemIds.length);
   }, [selectedItemIds]);
-  
+
   return (
     <div style={{
       display: 'flex',
@@ -46,7 +38,14 @@ function App() {
       <ItemList
         items={items}
         selectedItemIds={selectedItemIds}
-        onSelectItem={handleSelectItem}
+        onSelectItem={(id: number) => {
+          if (selectedItemIds.includes(id)) {
+            setSelectedItemIds(selectedItemIds.filter((itemId) => itemId !== id));
+          } else {
+          setSelectedItemIds((ids) => [...ids, id]);
+          setLastSelectedItemId(selectedItemIds.length ? selectedItemIds[selectedItemIds.length - 1] : null);
+          }
+        }}
       />
     </div>
   );
