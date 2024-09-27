@@ -1,4 +1,5 @@
-import  { useState, useEffect } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
+import { debounce } from 'lodash';
 import ItemList from './components/ItemList';
 import SearchBar from './components/SearchBar';
 import { fetchList, ItemData } from './api/fetch-list';
@@ -10,18 +11,35 @@ function App() {
   const [lastSelectedItemId, setLastSelectedItemId] = useState<number | null>(null);
   const [totalSelectedCount, setTotalSelectedCount] = useState<number>(0);
 
-  async function fetchData(){
-    const data = await fetchList({query});
-    setItems(data);
-  }
-
   useEffect(() => {
-    fetchData();
+    async function fetchData(){
+      const data = await fetchList({query});
+      setItems(data);
+    }
+    
+    const debouncedFetch = debounce(() => {
+      fetchData();
+    }, 300);
+
+    debouncedFetch();
   }, [query]);
 
 
   useEffect(() => {
     setTotalSelectedCount(selectedItemIds.length);
+  }, [selectedItemIds]);
+
+  const handleSelectItem = useCallback((id: number) => {
+    const newIds = new Set(selectedItemIds);
+    if (newIds.has(id)) {
+      newIds.delete(id);
+    } else {
+      newIds.add(id);
+    }
+    setSelectedItemIds(Array.from(newIds));
+    
+    const lastId = newIds.size ? Array.from(newIds)[newIds.size - 1] : null;
+    setLastSelectedItemId(lastId);
   }, [selectedItemIds]);
 
   return (
@@ -38,14 +56,7 @@ function App() {
       <ItemList
         items={items}
         selectedItemIds={selectedItemIds}
-        onSelectItem={(id: number) => {
-          if (selectedItemIds.includes(id)) {
-            setSelectedItemIds(selectedItemIds.filter((itemId) => itemId !== id));
-          } else {
-          setSelectedItemIds((ids) => [...ids, id]);
-          setLastSelectedItemId(selectedItemIds.length ? selectedItemIds[selectedItemIds.length - 1] : null);
-          }
-        }}
+        onSelectItem={handleSelectItem}
       />
     </div>
   );

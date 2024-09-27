@@ -11,7 +11,7 @@ function Item({ item, isSelected, onClick }: ItemProps) {
 
   return (
     <li
-      style={{ backgroundColor: isSelected ? 'yellow' : 'white', cursor: 'pointer'}}
+      style={{ backgroundColor: isSelected ? 'yellow' : 'white', cursor: 'pointer', color: 'black'}}
       onClick={onClick}
     >
         ID {item.id} - {item.name}
