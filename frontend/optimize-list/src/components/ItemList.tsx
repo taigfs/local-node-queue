@@ -1,3 +1,4 @@
+import React from 'react';
 import { ItemData } from '../api/fetch-list';
 import Item from './Item';
 
@@ -6,7 +7,7 @@ type ItemListProps = {
     selectedItemIds: number[];
     onSelectItem: (id: number) => void;
     };
-function ItemList({ items, selectedItemIds, onSelectItem }: ItemListProps) {
+const ItemList = React.memo(({ items, selectedItemIds, onSelectItem }: ItemListProps) => {
 
   return (
     <ul style={{width: '100%'}}>
@@ -20,6 +21,6 @@ function ItemList({ items, selectedItemIds, onSelectItem }: ItemListProps) {
       ))}
     </ul>
   );
-}
+})
 
 export default ItemList;
