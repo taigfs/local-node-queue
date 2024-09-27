@@ -1,4 +1,6 @@
 import { MockAPI } from "./MockAPI";
+import { RateLimiter } from "./RateLimiter";
+import { RequestQueue } from "./RequestQueue";
 
 type Limits = {
   rpm: number;
@@ -7,17 +9,16 @@ type Limits = {
 };
 
 export class ApiCaller {
-  private apiInstances: MockAPI[];
-  private limits: Limits;
+  private queue: RequestQueue;
 
   constructor(apiInstances: MockAPI[], limits: Limits) {
-    this.apiInstances = apiInstances;
-    this.limits = limits;
+    const rateLimiters = apiInstances.map(() => new RateLimiter(limits));
+    this.queue = new RequestQueue(apiInstances, rateLimiters);
   }
 
   async call(tokenCount: number) {
     try {
-      return await this.apiInstances[0].callAPI(tokenCount);
+      return this.queue.addRequest(tokenCount);
     } catch (error) {
       console.log(error);
     }
